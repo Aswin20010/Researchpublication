@@ -9,18 +9,43 @@ import conference from "../images/conference.jpg";
 import ooad from "../images/ooad.jpeg";
 import hod from "../images/hod.jpeg";
 import ip from "../images/ip.jpg";
-import {
-  HeadContainer,
-  BodyContainer,
-  Button,
-  CardContainer,
-  Heading,
-} from "./SearchInterNational";
-import axios from "axios";
+const CardContainer = styled.div`
+  margin-top: 10vh;
+  display: flex;
+  justify-content: center;
+`;
+const HeadContainer = styled.h1`
+  margin-left: 2.5%;
+  margin-right: 2.5%;
+  margin-top: 5vh;
+  min-width: auto;
+  background-color: white;
+  display: flex;
+  align-items: center;
+`;
 const Header = styled.h1`
   background-color: white;
   display: flex;
   justify-content: center;
+`;
+const BodyContainer = styled.h1`
+  margin-left: 2.5%;
+  margin-right: 2.5%;
+  margin-top: 5vh;
+  min-width: auto;
+  background-color: white;
+`;
+const Button = styled.button`
+  margin-left: auto;
+  margin-right: 3vw;
+  background-color: #cc2b5e;
+  color: white;
+  border-radius: 5px;
+  padding: 15px;
+`;
+const Heading = styled.h1`
+  font-weight: bold;
+  font-size: 20px;
 `;
 
 export const User = () => {
