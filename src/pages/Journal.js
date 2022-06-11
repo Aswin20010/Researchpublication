@@ -16,61 +16,51 @@ import {
   Heading,
 } from "./SearchInterNational";
 
-export const Journal = () =>{
-    const [back, setBack] = useState(false);
-    const logoutHandler = () => {
+export const Journal = () => {
+  const [back, setBack] = useState(false);
+  const logoutHandler = () => {
     localStorage.setItem("@logged", 0);
     setBack(true);
   };
-    return (
-        <div className="m-0 p-0">
+  return (
+    <div className="m-0 p-0">
       {back ? (
         <Redirect push to="/" />
       ) : (
         <>
-        <HeadContainer>
-        <img
-          className="mx-10 my-5"
-          src={rpms}
-          alt="logo"
-          height={50}
-          width={100}
-        />
-        <Heading className="mx-10 my-5">
-            RESEARCH PUBLICATION MANAGEMENT SYSTEM
-        </Heading>
-        <Button onClick={logoutHandler}>Logout</Button>
-      </HeadContainer>
-      <BodyContainer>
-      <CardContainer>
+          <HeadContainer>
+            <img
+              className="mx-10 my-5"
+              src={rpms}
+              alt="logo"
+              height={50}
+              width={100}
+            />
+            <Heading className="mx-10 my-5">
+              RESEARCH PUBLICATION MANAGEMENT SYSTEM
+            </Heading>
+            <Button onClick={logoutHandler}>Logout</Button>
+          </HeadContainer>
+          <BodyContainer>
+            <CardContainer>
               <Link to="/user/journal/search/normal">
-                <UserCard
-                  float
-                  header={norm}
-                  name='Normal'
-                  positionName=''
-                />
+                <UserCard float header={norm} name="Normal" positionName="" />
               </Link>
               <Link to="/user/journal/search/scopus">
-                <UserCard
-                  float
-                  header={scopus}
-                  name='Scopus'
-                  positionName=''
-                />
+                <UserCard float header={scopus} name="Scopus" positionName="" />
               </Link>
               <Link to="/user/journal/search/thomson">
                 <UserCard
                   float
                   header={thomson}
-                  name='Thomson Reuter'
-                  positionName=''
+                  name="Thomson Reuter"
+                  positionName=""
                 />
               </Link>
             </CardContainer>
-      </BodyContainer>
-      </>
-        )}
+          </BodyContainer>
+        </>
+      )}
     </div>
-    )
-}
+  );
+};

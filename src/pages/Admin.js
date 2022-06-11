@@ -43,33 +43,34 @@ export const Admin = () => {
           <BodyContainer>
             <Header>
               <Heading className="my-5">
-                Welcome to the Research Publication Management System (RPMS) at the SSN
-                Campus, Chennai!
+                Welcome to the Research Publication Management System (RPMS) at
+                the SSN Campus, Chennai!
               </Heading>
             </Header>
             <p className="mx-5">
-            Our interface has been created for the easy access of various 
-            conferences and journals published by the students and professors of SSN College of Engineering,
-            Chennai.Our interface helps you to pick the right publications by making use of the query options 
-            and filters available in this site.
+              Our interface has been created for the easy access of various
+              conferences and journals published by the students and professors
+              of SSN College of Engineering, Chennai.Our interface helps you to
+              pick the right publications by making use of the query options and
+              filters available in this site.
             </p>
             <CardContainer>
               <Link to="/admin/search">
                 <UserCard
                   float
                   header={journal}
-                  name='Search'
-                  positionName='Journals are periodical publications that relate to a certain academic discipline. 
-                  They contain a number of articles under a particular discipline. '
+                  name="Search"
+                  positionName="Journals are periodical publications that relate to a certain academic discipline. 
+                  They contain a number of articles under a particular discipline. "
                 />
               </Link>
               <Link to="/admin/insert">
                 <UserCard
                   float
                   header={conference}
-                  name='Insertion'
-                  positionName='A conference is a place where research articles are presented by scholars, researchers, experts, 
-                  and professionals after carrying out research studies.'
+                  name="Insertion"
+                  positionName="A conference is a place where research articles are presented by scholars, researchers, experts, 
+                  and professionals after carrying out research studies."
                 />
               </Link>
             </CardContainer>

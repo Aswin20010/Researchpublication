@@ -11,6 +11,7 @@ import author from "../images/author.jpg";
 import years from "../images/years.jpg";
 import desig from "../images/desig.jpg";
 import titles from "../images/titles.jpg";
+import Font from "react-font";
 import { Card, Tag } from "antd";
 import {
   HeadContainer,
@@ -219,54 +220,30 @@ export const Search = () => {
                     />
                     <Buttons onClick={nameFn}>Search</Buttons>
                     {data.length > 0 ? (
-                      <table className="  p-4 m-auto">
-                        <thead className="  p-4">
-                          <th className="  p-4">Title</th>
-                          <th className="  p-4">Conference Name</th>
-                          <th className="  p-4">Conference ShortName</th>
-                          <th className="  p-4">Conference Type</th>
-                          <th className="  p-4">Conference Organizer</th>
-                          <th className="  p-4">Conference Year</th>
-                          <th className="  p-4">Pages</th>
-                          <th className="  p-4">Citations</th>
-                          <th className="  p-4">Author</th>
-                        </thead>
-                        <tbody className="  p-4">
-                          {data.map((item) => {
-                            return (
-                              <tr className=" ">
-                                <td className="  p-4">
-                                  {item.value.Title}
-                                </td>
-                                <td className="  p-4">
-                                  {item.value.ConferenceName}
-                                </td>
-                                <td className="  p-4">
-                                  {item.value.ShortName}
-                                </td>
-                                <td className="  p-4">
-                                  {item.value.ConferenceType}
-                                </td>
-                                <td className="  p-4">
-                                  {item.value.Organizer}
-                                </td>
-                                <td className="  p-4">
-                                  {item.value.Year}
-                                </td>
-                                <td className="  p-4">
-                                  {item.value.Pages}
-                                </td>
-                                <td className="  p-4">
-                                  {item.value.Citations}
-                                </td>
-                                <td className="  p-4">
-                                  {item.value.AuthorName}
-                                </td>
-                              </tr>
-                            );
-                          })}
-                        </tbody>
-                      </table>
+                      <>
+                        <Heading1>Conference Details</Heading1>
+                        <br />
+                        <div className="ml-10  text-lg">
+                          {data
+                            .filter(
+                              (item) => item.value.ConferenceType == "national"
+                            )
+                            .map((item) => {
+                              return (
+                                <Font family="Kufam">
+                                  {item.value.AuthorName} ,{item.value.Title} ,
+                                  {item.value.ConferenceName} ,
+                                  {item.value.ShortName} ,
+                                  {item.value.ConferenceType} ,
+                                  {item.value.Organizer} ,{item.value.Year} ,
+                                  {item.value.Pages} ,{item.value.Citations}
+                                  <br />
+                                  <br />
+                                </Font>
+                              );
+                            })}
+                        </div>
+                      </>
                     ) : null}
                   </>
                 ) : (
@@ -303,58 +280,33 @@ export const Search = () => {
                         />
                         <Buttons onClick={yearFn}>Search</Buttons>
                         {data.length > 0 ? (
-                          <table className="  p-4 m-auto">
-                            <thead className="  p-4">
-                              <th className="  p-4">Title</th>
-                              <th className="  p-4">Conference Name</th>
-                              <th className="  p-4">
-                                Conference ShortName
-                              </th>
-                              <th className="  p-4">Conference Type</th>
-                              <th className="  p-4">
-                                Conference Organizer
-                              </th>
-                              <th className="  p-4">Conference Year</th>
-                              <th className="  p-4">Pages</th>
-                              <th className="  p-4">Citations</th>
-                              <th className="  p-4">Author</th>
-                            </thead>
-                            <tbody className="  p-4">
-                              {data.map((item) => {
-                                return (
-                                  <tr className=" ">
-                                    <td className="  p-4">
-                                      {item.value.Title}
-                                    </td>
-                                    <td className="  p-4">
-                                      {item.value.ConferenceName}
-                                    </td>
-                                    <td className="  p-4">
-                                      {item.value.ShortName}
-                                    </td>
-                                    <td className="  p-4">
-                                      {item.value.ConferenceType}
-                                    </td>
-                                    <td className="  p-4">
-                                      {item.value.Organizer}
-                                    </td>
-                                    <td className="  p-4">
-                                      {item.value.Year}
-                                    </td>
-                                    <td className="  p-4">
-                                      {item.value.Pages}
-                                    </td>
-                                    <td className="  p-4">
+                          <>
+                            <Heading1>Conference Details</Heading1>
+                            <br />
+                            <div className="ml-10  text-lg">
+                              {data
+                                .filter(
+                                  (item) =>
+                                    item.value.ConferenceType == "national"
+                                )
+                                .map((item) => {
+                                  return (
+                                    <Font family="Kufam">
+                                      {item.value.AuthorName} ,
+                                      {item.value.Title} ,
+                                      {item.value.ConferenceName} ,
+                                      {item.value.ShortName} ,
+                                      {item.value.ConferenceType} ,
+                                      {item.value.Organizer} ,{item.value.Year}{" "}
+                                      ,{item.value.Pages} ,
                                       {item.value.Citations}
-                                    </td>
-                                    <td className="  p-4">
-                                      {item.value.AuthorName}
-                                    </td>
-                                  </tr>
-                                );
-                              })}
-                            </tbody>
-                          </table>
+                                      <br />
+                                      <br />
+                                    </Font>
+                                  );
+                                })}
+                            </div>
+                          </>
                         ) : null}
                       </>
                     ) : (
@@ -391,64 +343,33 @@ export const Search = () => {
                             />
                             <Buttons onClick={DesigFn}>Search</Buttons>
                             {data.length > 0 ? (
-                              <table className="  p-4 m-auto">
-                                <thead className="  p-4">
-                                  <th className="  p-4">Title</th>
-                                  <th className="  p-4">
-                                    Conference Name
-                                  </th>
-                                  <th className="  p-4">
-                                    Conference ShortName
-                                  </th>
-                                  <th className="  p-4">
-                                    Conference Type
-                                  </th>
-                                  <th className="  p-4">
-                                    Conference Organizer
-                                  </th>
-                                  <th className="  p-4">
-                                    Conference Year
-                                  </th>
-                                  <th className="  p-4">Pages</th>
-                                  <th className="  p-4">Citations</th>
-                                  <th className="  p-4">Author</th>
-                                </thead>
-                                <tbody className="  p-4">
-                                  {data.map((item) => {
-                                    return (
-                                      <tr className=" ">
-                                        <td className="  p-4">
-                                          {item.value.Title}
-                                        </td>
-                                        <td className="  p-4">
-                                          {item.value.ConferenceName}
-                                        </td>
-                                        <td className="  p-4">
-                                          {item.value.ShortName}
-                                        </td>
-                                        <td className="  p-4">
-                                          {item.value.ConferenceType}
-                                        </td>
-                                        <td className="  p-4">
-                                          {item.value.Organizer}
-                                        </td>
-                                        <td className="  p-4">
-                                          {item.value.Year}
-                                        </td>
-                                        <td className="  p-4">
-                                          {item.value.Pages}
-                                        </td>
-                                        <td className="  p-4">
-                                          {item.value.Citations}
-                                        </td>
-                                        <td className="  p-4">
-                                          {item.value.AuthorName}
-                                        </td>
-                                      </tr>
-                                    );
-                                  })}
-                                </tbody>
-                              </table>
+                              <>
+                                <Heading1>Conference Details</Heading1>
+                                <br />
+                                <div className="ml-10  text-lg">
+                                  {data
+                                    .filter(
+                                      (item) =>
+                                        item.value.ConferenceType == "national"
+                                    )
+                                    .map((item) => {
+                                      return (
+                                        <Font family="Kufam">
+                                          {item.value.AuthorName} ,
+                                          {item.value.Title} ,
+                                          {item.value.ConferenceName} ,
+                                          {item.value.ShortName} ,
+                                          {item.value.ConferenceType} ,
+                                          {item.value.Organizer} ,
+                                          {item.value.Year} ,{item.value.Pages}{" "}
+                                          ,{item.value.Citations}
+                                          <br />
+                                          <br />
+                                        </Font>
+                                      );
+                                    })}
+                                </div>
+                              </>
                             ) : null}
                           </>
                         ) : (
@@ -483,64 +404,33 @@ export const Search = () => {
                             />
                             <Buttons onClick={TitleFn}>Search</Buttons>
                             {data.length > 0 ? (
-                              <table className="  p-4 m-auto">
-                                <thead className="  p-4">
-                                  <th className="  p-4">Title</th>
-                                  <th className="  p-4">
-                                    Conference Name
-                                  </th>
-                                  <th className="  p-4">
-                                    Conference ShortName
-                                  </th>
-                                  <th className="  p-4">
-                                    Conference Type
-                                  </th>
-                                  <th className="  p-4">
-                                    Conference Organizer
-                                  </th>
-                                  <th className="  p-4">
-                                    Conference Year
-                                  </th>
-                                  <th className="  p-4">Pages</th>
-                                  <th className="  p-4">Citations</th>
-                                  <th className="  p-4">Author</th>
-                                </thead>
-                                <tbody className="  p-4">
-                                  {data.map((item) => {
-                                    return (
-                                      <tr className=" ">
-                                        <td className="  p-4">
-                                          {item.value.Title}
-                                        </td>
-                                        <td className="  p-4">
-                                          {item.value.ConferenceName}
-                                        </td>
-                                        <td className="  p-4">
-                                          {item.value.ShortName}
-                                        </td>
-                                        <td className="  p-4">
-                                          {item.value.ConferenceType}
-                                        </td>
-                                        <td className="  p-4">
-                                          {item.value.Organizer}
-                                        </td>
-                                        <td className="  p-4">
-                                          {item.value.Year}
-                                        </td>
-                                        <td className="  p-4">
-                                          {item.value.Pages}
-                                        </td>
-                                        <td className="  p-4">
-                                          {item.value.Citations}
-                                        </td>
-                                        <td className="  p-4">
-                                          {item.value.AuthorName}
-                                        </td>
-                                      </tr>
-                                    );
-                                  })}
-                                </tbody>
-                              </table>
+                              <>
+                                <Heading1>Conference Details</Heading1>
+                                <br />
+                                <div className="ml-10  text-lg">
+                                  {data
+                                    .filter(
+                                      (item) =>
+                                        item.value.ConferenceType == "national"
+                                    )
+                                    .map((item) => {
+                                      return (
+                                        <Font family="Kufam">
+                                          {item.value.AuthorName} ,
+                                          {item.value.Title} ,
+                                          {item.value.ConferenceName} ,
+                                          {item.value.ShortName} ,
+                                          {item.value.ConferenceType} ,
+                                          {item.value.Organizer} ,
+                                          {item.value.Year} ,{item.value.Pages}{" "}
+                                          ,{item.value.Citations}
+                                          <br />
+                                          <br />
+                                        </Font>
+                                      );
+                                    })}
+                                </div>
+                              </>
                             ) : null}
                           </>
                         )}

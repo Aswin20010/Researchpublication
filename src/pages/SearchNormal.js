@@ -11,6 +11,7 @@ import author from "../images/author.jpg";
 import years from "../images/years.jpg";
 import desig from "../images/desig.jpg";
 import titles from "../images/titles.jpg";
+import Font from "react-font";
 import { Card, Tag } from "antd";
 import {
   HeadContainer,
@@ -51,14 +52,14 @@ export const Search = () => {
         where("Author", "==", userId),
         where("JournalType", "==", "normal")
       );
-        const journalSnapshot = await getDocs(q1);
-        journalSnapshot.forEach(async (JournalItem) => {
-          records.push({
-            id: JournalItem.id,
-            value: JournalItem.data(),
-          });
+      const journalSnapshot = await getDocs(q1);
+      journalSnapshot.forEach(async (JournalItem) => {
+        records.push({
+          id: JournalItem.id,
+          value: JournalItem.data(),
         });
-        setData(records);
+      });
+      setData(records);
     });
   };
   const yearFn = async () => {
@@ -82,7 +83,10 @@ export const Search = () => {
   const DesigFn = async () => {
     const records = [];
     const db = getFirestore();
-    const q = query(collection(db, "User"), where("Designation", "==", designation));
+    const q = query(
+      collection(db, "User"),
+      where("Designation", "==", designation)
+    );
     const userSnapshot = await getDocs(q);
     userSnapshot.forEach(async (doc) => {
       const userId = doc.id;
@@ -91,14 +95,14 @@ export const Search = () => {
         where("Author", "==", userId),
         where("JournalType", "==", "normal")
       );
-        const journalSnapshot = await getDocs(q1);
-        journalSnapshot.forEach(async (JournalItem) => {
-          records.push({
-            id: JournalItem.id,
-            value: JournalItem.data(),
-          });
+      const journalSnapshot = await getDocs(q1);
+      journalSnapshot.forEach(async (JournalItem) => {
+        records.push({
+          id: JournalItem.id,
+          value: JournalItem.data(),
         });
-        setData(records);
+      });
+      setData(records);
     });
   };
 
@@ -216,64 +220,31 @@ export const Search = () => {
                     />
                     <Buttons onClick={nameFn}>Search</Buttons>
                     {data.length > 0 ? (
-                      <table className="  p-4 m-auto mt-10">
-                        <thead className="  p-4">
-                        <th className="  p-4">Title</th>
-                          <th className="  p-4">Journal Name</th>
-                          <th className="  p-4">Journal Type</th>
-                          <th className="  p-4">Publish Year</th>
-                          <th className="  p-4">Citations</th>
-                          <th className="  p-4">Impact Factor</th>
-                          <th className="  p-4">Issues</th>
-                          <th className="  p-4">Volume</th>
-                          <th className="  p-4">Pages</th>
-                          <th className="  p-4">Sci Rating</th>
-                          <th className="  p-4">Author</th>
-                        </thead>
-                        <tbody className="  p-4">
-                          {data.map((item) => {
-                            console.log("data: ", data);
-                            console.log("item: ", item);
-                            return (
-                              <tr className=" ">
-                                <td className="  p-4">
-                                  {item.value.Title}
-                                </td>
-                                <td className="  p-4">
-                                  {item.value.JournalName}
-                                </td>
-                                <td className="  p-4">
-                                  {item.value.JournalType}
-                                </td>
-                                <td className="  p-4">
-                                  {item.value.Year}
-                                </td>
-                                <td className="  p-4">
-                                  {item.value.Citations}
-                                </td>
-                                <td className="  p-4">
-                                  {item.value.ImpactFactor}
-                                </td>
-                                <td className="  p-4">
-                                  {item.value.Issues}
-                                </td>
-                                <td className="  p-4">
-                                  {item.value.Volume}
-                                </td>
-                                <td className="  p-4">
-                                  {item.value.Pages}
-                                </td>
-                                <td className="  p-4">
+                      <>
+                        <Heading1>Journal Details</Heading1>
+                        <br />
+                        <div className="ml-10  text-lg">
+                          {data
+                            .filter(
+                              (item) => item.value.JournalType == "normal"
+                            )
+                            .map((item) => {
+                              return (
+                                <Font family="Kufam">
+                                  {item.value.AuthorName} ,{item.value.Title} ,
+                                  {item.value.JournalName} ,
+                                  {item.value.JournalType} ,{item.value.Year} ,
+                                  {item.value.Citations} ,
+                                  {item.value.ImpactFactor} ,{item.value.Issues}{" "}
+                                  ,{item.value.Volume} ,{item.value.Pages} ,
                                   {item.value.SciRating}
-                                </td>
-                                <td className="  p-4">
-                                  {item.value.AuthorName}
-                                </td>
-                              </tr>
-                            );
-                          })}
-                        </tbody>
-                      </table>
+                                  <br />
+                                  <br />
+                                </Font>
+                              );
+                            })}
+                        </div>
+                      </>
                     ) : null}
                   </>
                 ) : (
@@ -310,62 +281,32 @@ export const Search = () => {
                         />
                         <Buttons onClick={yearFn}>Search</Buttons>
                         {data.length > 0 ? (
-                          <table className="  p-4 m-auto mt-10">
-                            <thead className="  p-4">
-                        <th className="  p-4">Title</th>
-                          <th className="  p-4">Journal Name</th>
-                          <th className="  p-4">Journal Type</th>
-                          <th className="  p-4">Publish Year</th>
-                          <th className="  p-4">Citations</th>
-                          <th className="  p-4">Impact Factor</th>
-                          <th className="  p-4">Issues</th>
-                          <th className="  p-4">Volume</th>
-                          <th className="  p-4">Pages</th>
-                          <th className="  p-4">Sci Rating</th>
-                          <th className="  p-4">Author</th>
-                            </thead>
-                            <tbody className="  p-4">
-                              {data.map((item) => {
-                                return (
-                                  <tr className=" ">
-                                    <td className="  p-4">
-                                      {item.value.Title}
-                                    </td>
-                                    <td className="  p-4">
-                                      {item.value.JournalName}
-                                    </td>
-                                    <td className="  p-4">
-                                      {item.value.JournalType}
-                                    </td>
-                                    <td className="  p-4">
-                                      {item.value.Year}
-                                    </td>
-                                    <td className="  p-4">
-                                      {item.value.Citations}
-                                    </td>
-                                    <td className="  p-4">
-                                      {item.value.ImpactFactor}
-                                    </td>
-                                    <td className="  p-4">
-                                      {item.value.Issues}
-                                    </td>
-                                    <td className="  p-4">
-                                      {item.value.Volume}
-                                    </td>
-                                    <td className="  p-4">
-                                      {item.value.Pages}
-                                    </td>
-                                    <td className="  p-4">
-                                      {item.value.SciRating}
-                                    </td>
-                                    <td className="  p-4">
-                                      {item.value.AuthorName}
-                                    </td>
-                                  </tr>
-                                );
-                              })}
-                            </tbody>
-                          </table>
+                          <>
+                            <Heading1>Journal Details</Heading1>
+                            <br />
+                            <div className="ml-10  text-lg">
+                              {data
+                                .filter(
+                                  (item) => item.value.JournalType == "normal"
+                                )
+                                .map((item) => {
+                                  return (
+                                    <Font family="Kufam">
+                                      {item.value.AuthorName} ,
+                                      {item.value.Title} ,
+                                      {item.value.JournalName} ,
+                                      {item.value.JournalType} ,
+                                      {item.value.Year} ,{item.value.Citations}{" "}
+                                      ,{item.value.ImpactFactor} ,
+                                      {item.value.Issues} ,{item.value.Volume} ,
+                                      {item.value.Pages} ,{item.value.SciRating}
+                                      <br />
+                                      <br />
+                                    </Font>
+                                  );
+                                })}
+                            </div>
+                          </>
                         ) : null}
                       </>
                     ) : (
@@ -402,64 +343,36 @@ export const Search = () => {
                             />
                             <Buttons onClick={DesigFn}>Search</Buttons>
                             {data.length > 0 ? (
-                              <table className="  p-4 m-auto mt-10">
-                        <thead className="  p-4">
-                        <th className="  p-4">Title</th>
-                          <th className="  p-4">Journal Name</th>
-                          <th className="  p-4">Journal Type</th>
-                          <th className="  p-4">Publish Year</th>
-                          <th className="  p-4">Citations</th>
-                          <th className="  p-4">Impact Factor</th>
-                          <th className="  p-4">Issues</th>
-                          <th className="  p-4">Volume</th>
-                          <th className="  p-4">Pages</th>
-                          <th className="  p-4">Sci Rating</th>
-                          <th className="  p-4">Author</th>
-                        </thead>
-                                <tbody className="  p-4">
-                                  {data.map((item) => {
-                                    console.log("data: ", data);
-                                    console.log("item: ", item);
-                                    return (
-                                        <tr className=" ">
-                                        <td className="  p-4">
-                                          {item.value.Title}
-                                        </td>
-                                        <td className="  p-4">
-                                          {item.value.JournalName}
-                                        </td>
-                                        <td className="  p-4">
-                                          {item.value.JournalType}
-                                        </td>
-                                <td className="  p-4">
-                                  {item.value.Year}
-                                </td>
-                                        <td className="  p-4">
-                                          {item.value.Citations}
-                                        </td>
-                                        <td className="  p-4">
-                                          {item.value.ImpactFactor}
-                                        </td>
-                                        <td className="  p-4">
-                                          {item.value.Issues}
-                                        </td>
-                                        <td className="  p-4">
-                                          {item.value.Volume}
-                                        </td>
-                                        <td className="  p-4">
-                                          {item.value.Pages}
-                                        </td>
-                                        <td className="  p-4">
+                              <>
+                                <Heading1>Journal Details</Heading1>
+                                <br />
+                                <div className="ml-10  text-lg">
+                                  {data
+                                    .filter(
+                                      (item) =>
+                                        item.value.JournalType == "normal"
+                                    )
+                                    .map((item) => {
+                                      return (
+                                        <Font family="Kufam">
+                                          {item.value.AuthorName} ,
+                                          {item.value.Title} ,
+                                          {item.value.JournalName} ,
+                                          {item.value.JournalType} ,
+                                          {item.value.Year} ,
+                                          {item.value.Citations} ,
+                                          {item.value.ImpactFactor} ,
+                                          {item.value.Issues} ,
+                                          {item.value.Volume} ,
+                                          {item.value.Pages} ,
                                           {item.value.SciRating}
-                                        </td>
-                                        <td className="  p-4">
-                                          {item.value.AuthorName}
-                                        </td>
-                                      </tr>   
-                                    );
-                                  })}
-                                </tbody>
-                              </table>
+                                          <br />
+                                          <br />
+                                        </Font>
+                                      );
+                                    })}
+                                </div>
+                              </>
                             ) : null}
                           </>
                         ) : (
@@ -494,62 +407,36 @@ export const Search = () => {
                             />
                             <Buttons onClick={TitleFn}>Search</Buttons>
                             {data.length > 0 ? (
-                              <table className="  p-4 m-auto mt-10">
-                                <thead className="  p-4">
-                        <th className="  p-4">Title</th>
-                          <th className="  p-4">Journal Name</th>
-                          <th className="  p-4">Journal Type</th>
-                          <th className="  p-4">Publish Year</th>
-                          <th className="  p-4">Citations</th>
-                          <th className="  p-4">Impact Factor</th>
-                          <th className="  p-4">Issues</th>
-                          <th className="  p-4">Volume</th>
-                          <th className="  p-4">Pages</th>
-                          <th className="  p-4">Sci Rating</th>
-                          <th className="  p-4">Author</th>
-                                </thead>
-                                <tbody className="  p-4">
-                                  {data.map((item) => {
-                                    return (
-                                <tr className=" ">
-                                <td className="  p-4">
-                                  {item.value.Title}
-                                </td>
-                                <td className="  p-4">
-                                  {item.value.JournalName}
-                                </td>
-                                <td className="  p-4">
-                                  {item.value.JournalType}
-                                </td>
-                                <td className="  p-4">
-                                  {item.value.Year}
-                                </td>
-                                <td className="  p-4">
-                                  {item.value.Citations}
-                                </td>
-                                <td className="  p-4">
-                                  {item.value.ImpactFactor}
-                                </td>
-                                <td className="  p-4">
-                                  {item.value.Issues}
-                                </td>
-                                <td className="  p-4">
-                                  {item.value.Volume}
-                                </td>
-                                <td className="  p-4">
-                                  {item.value.Pages}
-                                </td>
-                                <td className="  p-4">
-                                  {item.value.SciRating}
-                                </td>
-                                <td className="  p-4">
-                                  {item.value.AuthorName}
-                                </td>
-                              </tr>
-                                    );
-                                  })}
-                                </tbody>
-                              </table>
+                              <>
+                                <Heading1>Journal Details</Heading1>
+                                <br />
+                                <div className="ml-10  text-lg">
+                                  {data
+                                    .filter(
+                                      (item) =>
+                                        item.value.JournalType == "normal"
+                                    )
+                                    .map((item) => {
+                                      return (
+                                        <Font family="Kufam">
+                                          {item.value.AuthorName} ,
+                                          {item.value.Title} ,
+                                          {item.value.JournalName} ,
+                                          {item.value.JournalType} ,
+                                          {item.value.Year} ,
+                                          {item.value.Citations} ,
+                                          {item.value.ImpactFactor} ,
+                                          {item.value.Issues} ,
+                                          {item.value.Volume} ,
+                                          {item.value.Pages} ,
+                                          {item.value.SciRating}
+                                          <br />
+                                          <br />
+                                        </Font>
+                                      );
+                                    })}
+                                </div>
+                              </>
                             ) : null}
                           </>
                         )}

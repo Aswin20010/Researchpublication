@@ -6,7 +6,7 @@ import { Redirect } from "react-router-dom";
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { getFirestore } from "firebase/firestore";
 import firebase from "../firebaseConfig";
-
+import axios from "axios";
 const Containers = styled.div`
   display: flex;
   justify-content: center;
@@ -15,26 +15,22 @@ const Containers = styled.div`
 export const Login = () => {
   const [userName, setUserName] = useState();
   const [password, setPassword] = useState();
-  const [loggedIn, setLoggedIn] = useState(localStorage.getItem('@logged'));
+  const [loggedIn, setLoggedIn] = useState(localStorage.getItem("@logged"));
   const loginHandler = async () => {
     const auth = getAuth();
     if (userName == "admin@gmail.com" && password == "ssn") {
       setLoggedIn(2);
-      localStorage.setItem('@logged',2)
-    }
-    try {
-      const userCredential = await signInWithEmailAndPassword(
-        auth,
-        userName,
-        password
-      );
-      console.log(userCredential);
-      if (userCredential) {
-        localStorage.setItem('@logged',1);
-        setLoggedIn(1);
+      localStorage.setItem("@logged", 2);
+    } else {
+      const loginResult = await axios.post("http://localhost:5000/login", {
+        email: userName,
+        password: password,
+      });
+      console.log(loginResult);
+      if (loginResult.data.login) setLoggedIn(1);
+      else {
+        console.log("INVALID CREDENTIALS");
       }
-    } catch (err) {
-      console.log(err);
     }
   };
   return (

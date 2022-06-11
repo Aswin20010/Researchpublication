@@ -13,10 +13,10 @@ import rpms from "../images/rpms.jpg";
 import Dropdown from "react-dropdown";
 import Select from "react-select";
 const Label = styled.label`
-font-weight:bold;
-margin: auto;
-display: flex;
-justify-content: center;
+  font-weight: bold;
+  margin: auto;
+  display: flex;
+  justify-content: center;
 `;
 export const ExistingUser = () => {
   const db = getFirestore();
@@ -29,9 +29,9 @@ export const ExistingUser = () => {
   const [JournalName, setJournalName] = useState();
   const [JournalType, setJournalType] = useState();
   const [Volume, setVolume] = useState();
-  const [rating,setrating] =useState();
-  const [impact,setimpact] = useState();
-  const [issues,setissues] = useState();
+  const [rating, setrating] = useState();
+  const [impact, setimpact] = useState();
+  const [issues, setissues] = useState();
   const [OrganisedBy, setOrganisedBy] = useState();
   const [Conferencetype, setConferenceType] = useState();
   const [Conferencename, setConferenceName] = useState();
@@ -76,13 +76,15 @@ export const ExistingUser = () => {
               Insert Form
             </h1>
             <br />
-            <Label>Select The Author:</Label><br />
+            <Label>Select The Author:</Label>
+            <br />
             <Select
               options={userDoc}
               value={user}
               onChange={(value) => setUser(value)}
               className="w-1/3 m-auto"
-            /><br />
+            />
+            <br />
             <Label>Select Research Type:</Label>
             <Select
               options={[
@@ -102,13 +104,15 @@ export const ExistingUser = () => {
               className="mt-5 w-1/3 m-auto"
             />
             {researchType?.value == "journal" ? (
-              <><br /><br />
+              <>
+                <br />
+                <br />
                 <Label>Enter Research Title:</Label>
-              <input
-              type="text"
-              value={ResearchTitle}
-              onChange={(e) => setResearchTitle(e.target.value)}
-              className="
+                <input
+                  type="text"
+                  value={ResearchTitle}
+                  onChange={(e) => setResearchTitle(e.target.value)}
+                  className="
               form-control
               block
               w-1/3
@@ -126,9 +130,11 @@ export const ExistingUser = () => {
               mt-5
               focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
             "
-            /><br /><br />
-            <Label>Enter Journal Name:</Label>
-            <input
+                />
+                <br />
+                <br />
+                <Label>Enter Journal Name:</Label>
+                <input
                   type="text"
                   value={JournalName}
                   onChange={(e) => setJournalName(e.target.value)}
@@ -150,9 +156,11 @@ export const ExistingUser = () => {
               mt-5
               focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
             "
-            /><br /><br />        
-            <Label>Enter Year Of Publish:</Label>
-            <input
+                />
+                <br />
+                <br />
+                <Label>Enter Year Of Publish:</Label>
+                <input
                   type="text"
                   value={year}
                   onChange={(e) => setyear(e.target.value)}
@@ -174,13 +182,15 @@ export const ExistingUser = () => {
               mt-5
               focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
             "
-            /><br /><br />
-            <Label>Number of Citations:</Label>
-            <input
-              type="number"
-              value={citations}
-              onChange={(e) => setCitations(e.target.value)}
-              className="
+                />
+                <br />
+                <br />
+                <Label>Number of Citations:</Label>
+                <input
+                  type="number"
+                  value={citations}
+                  onChange={(e) => setCitations(e.target.value)}
+                  className="
               form-control
               block
               w-1/3
@@ -198,13 +208,15 @@ export const ExistingUser = () => {
               mt-5
               focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
             "
-            /><br /><br />
-            <Label>Number Of Pages:</Label>
-            <input
-              type="text"
-              value={Pages}
-              onChange={(e) => setPages(e.target.value)}
-              className="
+                />
+                <br />
+                <br />
+                <Label>Number Of Pages:</Label>
+                <input
+                  type="text"
+                  value={Pages}
+                  onChange={(e) => setPages(e.target.value)}
+                  className="
               form-control
               block
               w-1/3
@@ -222,8 +234,10 @@ export const ExistingUser = () => {
               mt-5
               focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
             "
-            /><br /><br />
-            <Label>Enter Volume Number:</Label>
+                />
+                <br />
+                <br />
+                <Label>Enter Volume Number:</Label>
                 <input
                   type="text"
                   value={Volume}
@@ -246,7 +260,9 @@ export const ExistingUser = () => {
               mt-5
               focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
             "
-                /><br /><br />
+                />
+                <br />
+                <br />
                 <Label>Enter Number Of Issues:</Label>
                 <input
                   type="text"
@@ -270,7 +286,9 @@ export const ExistingUser = () => {
               mt-5
               focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
             "
-                /><br /><br />
+                />
+                <br />
+                <br />
                 <Label>Enter Impact Factor:</Label>
                 <input
                   type="text"
@@ -294,7 +312,9 @@ export const ExistingUser = () => {
               mt-5
               focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
             "
-                /><br /><br />
+                />
+                <br />
+                <br />
                 <Label>Enter Sci Rating:</Label>
                 <input
                   type="text"
@@ -318,7 +338,9 @@ export const ExistingUser = () => {
               mt-5
               focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
             "
-                /><br /><br />
+                />
+                <br />
+                <br />
                 <Label>Enter Journal Type:</Label>
                 <Select
                   options={[
@@ -343,13 +365,15 @@ export const ExistingUser = () => {
             ) : (
               <>
                 {researchType?.value == "conference" ? (
-                  <><br /><br />
+                  <>
+                    <br />
+                    <br />
                     <Label>Enter Research Title:</Label>
-              <input
-              type="text"
-              value={ResearchTitle}
-              onChange={(e) => setResearchTitle(e.target.value)}
-              className="
+                    <input
+                      type="text"
+                      value={ResearchTitle}
+                      onChange={(e) => setResearchTitle(e.target.value)}
+                      className="
               form-control
               block
               w-1/3
@@ -367,8 +391,10 @@ export const ExistingUser = () => {
               mt-5
               focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
             "
-            /><br /><br />
-            <Label>Enter Conference Name:</Label>
+                    />
+                    <br />
+                    <br />
+                    <Label>Enter Conference Name:</Label>
                     <input
                       type="text"
                       value={Conferencename}
@@ -391,7 +417,9 @@ export const ExistingUser = () => {
               mt-5
               focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
             "
-                    /><br /><br />
+                    />
+                    <br />
+                    <br />
                     <Label>Enter Conference ShortName:</Label>
                     <input
                       type="text"
@@ -415,7 +443,9 @@ export const ExistingUser = () => {
               mt-5
               focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
             "
-                    /><br /><br />
+                    />
+                    <br />
+                    <br />
                     <Label>Enter Conference Organiser:</Label>
                     <input
                       type="text"
@@ -439,13 +469,15 @@ export const ExistingUser = () => {
               mt-5
               focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
             "
-                    /><br /><br />               
-            <Label>Enter Conference Year:</Label>
-            <input
-                  type="text"
-                  value={year}
-                  onChange={(e) => setyear(e.target.value)}
-                  className="
+                    />
+                    <br />
+                    <br />
+                    <Label>Enter Conference Year:</Label>
+                    <input
+                      type="text"
+                      value={year}
+                      onChange={(e) => setyear(e.target.value)}
+                      className="
               form-control
               block
               w-1/3
@@ -463,13 +495,15 @@ export const ExistingUser = () => {
               mt-5
               focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
             "
-            /><br /><br />
-              <Label>Number of Citations:</Label>
-            <input
-              type="number"
-              value={citations}
-              onChange={(e) => setCitations(e.target.value)}
-              className="
+                    />
+                    <br />
+                    <br />
+                    <Label>Number of Citations:</Label>
+                    <input
+                      type="number"
+                      value={citations}
+                      onChange={(e) => setCitations(e.target.value)}
+                      className="
               form-control
               block
               w-1/3
@@ -487,13 +521,15 @@ export const ExistingUser = () => {
               mt-5
               focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
             "
-            /><br /><br />
-            <Label>Number Of Pages:</Label>
-            <input
-              type="text"
-              value={Pages}
-              onChange={(e) => setPages(e.target.value)}
-              className="
+                    />
+                    <br />
+                    <br />
+                    <Label>Number Of Pages:</Label>
+                    <input
+                      type="text"
+                      value={Pages}
+                      onChange={(e) => setPages(e.target.value)}
+                      className="
               form-control
               block
               w-1/3
@@ -511,8 +547,10 @@ export const ExistingUser = () => {
               mt-5
               focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
             "
-            /><br /><br />
-            <Label>Enter Conference Type:</Label>
+                    />
+                    <br />
+                    <br />
+                    <Label>Enter Conference Type:</Label>
                     <Select
                       options={[
                         {
